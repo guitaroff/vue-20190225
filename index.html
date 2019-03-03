@@ -1,0 +1,65 @@
+<html></<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  </head>
+  <body>
+    <div id="app">
+      <el-container>
+        <el-header><h2>Список юзеров</h2></el-header>
+        <el-row>
+          <el-col :span="24">
+            <template>
+              <el-table
+                :data="users"
+                style="width: 800px">
+                <el-table-column
+                  prop="lastname"
+                  label="Фамилия"
+                  width="180">
+                </el-table-column>
+                <el-table-column
+                  prop="firstname"
+                  label="Имя"
+                  width="180">
+                </el-table-column>
+                <el-table-column
+                  prop="secondname"
+                  label="Отчество"
+                  width="180">
+                </el-table-column>
+                <el-table-column
+                  prop="avatar"
+                  label="Фото профиля"
+                  width="180">
+                </el-table-column>
+              </el-table>
+            </template>
+          </el-col>
+        </el-row>
+      </el-container>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script type="text/javascript">
+      window.app = new Vue({
+        el: '#app',
+        data: function() {
+          return {
+            users: [
+              {'id': 1,'firstname': 'Владлена', 'secondname': 'Семеновна', 'lastname': 'Александрова', 'avatar': null},
+              {'id': 2, 'firstname': 'Агафья', 'secondname': 'Александровна ', 'lastname': 'Морозова', 'avatar': null},
+              {'id': 3, 'firstname': 'Александр', 'secondname': 'Артемович', 'lastname': 'Сорокин', 'avatar': null},
+              {'id': 4, 'firstname': 'Ярослав', 'secondname': 'Ярославович', 'lastname': 'Ефимов', 'avatar': null},
+              {'id': 5, 'firstname': 'Мариетта', 'secondname': 'Алексеевна', 'lastname': 'Рзаева', 'avatar': null}
+            ]
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
