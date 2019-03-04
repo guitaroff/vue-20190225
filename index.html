@@ -4,9 +4,12 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style type="text/css">
+      [v-cloak] > * { display:none; }
+    </style>
   </head>
   <body>
-    <div id="app">
+    <div id="app"  v-cloak>
       <el-header><h2>Список сотрудников</h2></el-header>
       <el-header>Общее количество: {{ users.length }}</el-header>
       <el-button
@@ -16,7 +19,9 @@
         Показать/скрыть таблицу
       </el-button>
       <el-row>
-        <el-col :span="24" v-if='getUsers'>
+        <el-col
+          :span="24"
+          v-if="showUsers">
           <template>
             <el-table
               :data="users"
@@ -41,9 +46,7 @@
                 prop="avatar"
                 label="Фото профиля"
                 width="180">
-                <template scope="scope">
                   <img src="http://i.pravatar.cc/150?img=52" />
-                </template>
               </el-table-column>
             </el-table>
           </template>
@@ -59,19 +62,22 @@
         el: '#app',
         data: function() {
           return {
-            users: [
-              {'id': 1,'firstname': 'Владлена', 'secondname': 'Семеновна', 'lastname': 'Александрова', 'avatar': null},
-              {'id': 2, 'firstname': 'Агафья', 'secondname': 'Александровна ', 'lastname': 'Морозова', 'avatar': null},
-              {'id': 3, 'firstname': 'Александр', 'secondname': 'Артемович', 'lastname': 'Сорокин', 'avatar': null},
-              {'id': 4, 'firstname': 'Ярослав', 'secondname': 'Ярославович', 'lastname': 'Ефимов', 'avatar': null},
-              {'id': 5, 'firstname': 'Мариетта', 'secondname': 'Алексеевна', 'lastname': 'Рзаева', 'avatar': null}
-            ],
-            getUsers: true
+            users: [],
+            showUsers: true
           }
+        },
+        created: function () {
+          this.users = [
+            {'id': 1,'firstname': 'Владлена', 'secondname': 'Семеновна', 'lastname': 'Александрова', 'avatar': null},
+            {'id': 2, 'firstname': 'Агафья', 'secondname': 'Александровна ', 'lastname': 'Морозова', 'avatar': null},
+            {'id': 3, 'firstname': 'Александр', 'secondname': 'Артемович', 'lastname': 'Сорокин', 'avatar': null},
+            {'id': 4, 'firstname': 'Ярослав', 'secondname': 'Ярославович', 'lastname': 'Ефимов', 'avatar': null},
+            {'id': 5, 'firstname': 'Мариетта', 'secondname': 'Алексеевна', 'lastname': 'Рзаева', 'avatar': null}
+          ]
         },
         methods: {
           toggleUsersTable: function () {
-            this.getUsers = !this.getUsers
+            this.showUsers = !this.showUsers
           }
         }
       })
