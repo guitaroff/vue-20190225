@@ -7,39 +7,45 @@
   </head>
   <body>
     <div id="app">
-      <el-container>
-        <el-header><h2>Список юзеров</h2></el-header>
-        <el-row>
-          <el-col :span="24">
-            <template>
-              <el-table
-                :data="users"
-                style="width: 800px">
-                <el-table-column
-                  prop="lastname"
-                  label="Фамилия"
-                  width="180">
-                </el-table-column>
-                <el-table-column
-                  prop="firstname"
-                  label="Имя"
-                  width="180">
-                </el-table-column>
-                <el-table-column
-                  prop="secondname"
-                  label="Отчество"
-                  width="180">
-                </el-table-column>
-                <el-table-column
-                  prop="avatar"
-                  label="Фото профиля"
-                  width="180">
-                </el-table-column>
-              </el-table>
-            </template>
-          </el-col>
-        </el-row>
-      </el-container>
+      <el-header><h2>Список сотрудников</h2></el-header>
+      <el-header>Общее количество: {{ users.length }}</el-header>
+      <el-button
+        type="primary"
+        round
+        v-on:click="toggleUsersTable">
+        Показать/скрыть таблицу
+      </el-button>
+      <el-row>
+        <el-col :span="24" v-if='getUsers'>
+          <template>
+            <el-table
+              :data="users"
+              style="width: 800px"
+              align="center">
+              <el-table-column
+                prop="lastname"
+                label="Фамилия"
+                width="180">
+              </el-table-column>
+              <el-table-column
+                prop="firstname"
+                label="Имя"
+                width="180">
+              </el-table-column>
+              <el-table-column
+                prop="secondname"
+                label="Отчество"
+                width="180">
+              </el-table-column>
+              <el-table-column
+                prop="avatar"
+                label="Фото профиля"
+                width="180">
+              </el-table-column>
+            </el-table>
+          </template>
+        </el-col>
+      </el-row>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -56,7 +62,13 @@
               {'id': 3, 'firstname': 'Александр', 'secondname': 'Артемович', 'lastname': 'Сорокин', 'avatar': null},
               {'id': 4, 'firstname': 'Ярослав', 'secondname': 'Ярославович', 'lastname': 'Ефимов', 'avatar': null},
               {'id': 5, 'firstname': 'Мариетта', 'secondname': 'Алексеевна', 'lastname': 'Рзаева', 'avatar': null}
-            ]
+            ],
+            getUsers: true
+          }
+        },
+        methods: {
+          toggleUsersTable: function () {
+            this.getUsers = !this.getUsers
           }
         }
       })
