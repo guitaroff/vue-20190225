@@ -32,6 +32,11 @@
             users: []
           }
         },
+        watch: {
+          users: function () {
+            console.log('Обновился список пользователей.')
+          }
+        },
         methods: {
           loadUsers: function () {
             return this.users = [
