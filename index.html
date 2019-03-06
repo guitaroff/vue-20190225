@@ -20,13 +20,34 @@
         class="btn btn-primary">
         Загрузить список пользователей
       </button>
-      <pre v-show="users.length > 0">{{ users }}</pre>
+      <users-list v-bind:users="users"></users-list>
     </div>
+
+    <template id="users-list">
+      <p>{{ users }}</p>
+    </template>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript">
+      var UsersList = {
+        template: '#users-list',
+        props: {
+          users: {
+            type: Array,
+            required: true
+          }
+        },
+        data: function () {
+          return {
+          }
+        }
+      }
+
       window.app = new Vue({
         el: '#app',
+        components: {
+          'users-list': UsersList
+        },
         data: function() {
           return {
             users: []
@@ -48,7 +69,8 @@
             ]
           }
         }
-      })
+      });
+      Vue.config.devtools = true;
     </script>
   </body>
 </html>
