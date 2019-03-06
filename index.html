@@ -14,6 +14,13 @@
     <div id="app"  v-cloak>
       <h2>Список пользователей</h2>
       <p><a href="edit.html">Редактирование пользователя</a></p>
+      <button
+        type="button"
+        v-on:click="loadUsers"
+        class="btn btn-primary">
+        Загрузить список пользователей
+      </button>
+      <pre v-show="users.length > 0">{{ users }}</pre>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
@@ -25,11 +32,16 @@
             users: []
           }
         },
-        created: function () {
-          
-        },
         methods: {
-          
+          loadUsers: function () {
+            return this.users = [
+              {'id': 1,'firstname': 'Владлена', 'secondname': 'Семеновна', 'lastname': 'Александрова', 'avatar': null},
+              {'id': 2, 'firstname': 'Агафья', 'secondname': 'Александровна ', 'lastname': 'Морозова', 'avatar': null},
+              {'id': 3, 'firstname': 'Александр', 'secondname': 'Артемович', 'lastname': 'Сорокин', 'avatar': null},
+              {'id': 4, 'firstname': 'Ярослав', 'secondname': 'Ярославович', 'lastname': 'Ефимов', 'avatar': null},
+              {'id': 5, 'firstname': 'Мариетта', 'secondname': 'Алексеевна', 'lastname': 'Рзаева', 'avatar': null}
+            ]
+          }
         }
       })
     </script>
