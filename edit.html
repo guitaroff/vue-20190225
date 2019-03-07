@@ -13,25 +13,43 @@
   <body>
     <div id="app" v-cloak>
       <h2>Редактирование пользователя</h2>
+      <user-form v-bind:edit_user="user"></user-form>
       <p><a href="index.html">Список пользователей</a></p>
     </div>
 
+    <template id="user-form">
+      <p>{{ edit_user }}</p>
+    </template>
+
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript">
+      var userForm = {
+        template: '#user-form',
+        props: {
+          edit_user: {
+            type: Object,
+            required: true
+          }
+        }
+      }
       window.app = new Vue({
         el: '#app',
+        components: {
+          'user-form': userForm
+        },
         data: function() {
           return {
-            users: []
+            user: {}
           }
         },
-        created: function () {
-          
+        mounted: function () {
+          this.user = {'id': 1,'firstname': 'Владлена', 'secondname': 'Семеновна', 'lastname': 'Александрова', 'avatar': null}
         },
         methods: {
           
         }
       })
+      Vue.config.devtools = true;
     </script>
   </body>
 </html>
