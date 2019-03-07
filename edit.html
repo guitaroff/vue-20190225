@@ -18,6 +18,38 @@
     </div>
 
     <template id="user-form">
+      <form>
+        <div class="form-group">
+          <label for="firstnameInput">Имя</label>
+          <input
+            type="text"
+            v-model="edit_user.firstname"
+            class="form-control"
+            id="firstnameInput"
+            placeholder="Введите имя">
+        </div>
+        <div class="form-group">
+          <label for="secondnameInput">Отчество</label>
+          <input
+            type="text"
+            v-model="edit_user.secondname"
+            class="form-control"
+            id="secondnameInput"
+            placeholder="Введите отчество">
+        </div>
+        <div class="form-group">
+          <label for="lastnameInput">Фамилия</label>
+          <input
+            type="text"
+            v-model="edit_user.lastname"
+            class="form-control"
+            id="lastnameInput"
+            placeholder="Введите фамилия">
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary">Submit</button>
+      </form>
       <p>{{ edit_user }}</p>
     </template>
 
@@ -44,9 +76,6 @@
         },
         mounted: function () {
           this.user = {'id': 1,'firstname': 'Владлена', 'secondname': 'Семеновна', 'lastname': 'Александрова', 'avatar': null}
-        },
-        methods: {
-          
         }
       })
       Vue.config.devtools = true;
