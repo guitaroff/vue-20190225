@@ -15,7 +15,7 @@
       <p><a href="index.html">Вернуться на главную</a></p>
       <h2>Редактирование пользователя</h2>
       <pre>Данные наверху: {{ user }}</pre>
-      <user-form v-bind:user="user" v-on:user="updateUser"></user-form>
+      <user-form v-if="user" v-bind:user="user" v-on:user="updateUser"></user-form>
     </div>
 
     <template id="user-form">
@@ -79,7 +79,7 @@
         },
         data: function() {
           return {
-            user: {}
+            user: null
           }
         },
         mounted: function () {
