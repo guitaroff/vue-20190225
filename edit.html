@@ -15,7 +15,7 @@
       <p><a href="index.html">Вернуться на главную</a></p>
       <h2>Редактирование пользователя</h2>
       <pre>Данные наверху: {{ user }}</pre>
-      <user-form v-bind:edit_user="user" v-on:edit_user="updateUser"></user-form>
+      <user-form v-bind:user="user" v-on:user="updateUser"></user-form>
     </div>
 
     <template id="user-form">
@@ -24,7 +24,7 @@
           <label for="firstnameInput">Имя</label>
           <input
             type="text"
-            v-model="edit_user.firstname"
+            v-model="user.firstname"
             class="form-control"
             id="firstnameInput"
             placeholder="Введите имя">
@@ -33,7 +33,7 @@
           <label for="secondnameInput">Отчество</label>
           <input
             type="text"
-            v-model="edit_user.secondname"
+            v-model="user.secondname"
             class="form-control"
             id="secondnameInput"
             placeholder="Введите отчество">
@@ -42,10 +42,10 @@
           <label for="lastnameInput">Фамилия</label>
           <input
             type="text"
-            v-model="edit_user.lastname"
+            v-model="user.lastname"
             class="form-control"
             id="lastnameInput"
-            placeholder="Введите фамилия">
+            placeholder="Введите фамилию">
         </div>
         <button
           type="submit"
@@ -56,18 +56,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript">
+      Vue.config.devtools = true;
       var userForm = {
         template: '#user-form',
         props: {
-          edit_user: {
+          user: {
             type: Object,
             required: true
           }
         },
         methods: {
           updateUser: function () {
-            console.log('edit_user', this.edit_user)
-            this.$emit('edit_user', this.edit_user)
+            console.log('user', this.user)
+            this.$emit('user', this.user)
           }
         }
       }
@@ -85,13 +86,12 @@
           this.user = {'id': 1,'firstname': 'Владлена', 'secondname': 'Семеновна', 'lastname': 'Александрова', 'avatar': null}
         },
         methods: {
-          updateUser: function (edit_user) {
-            console.log('PARENT', edit_user)
-            this.user = edit_user
+          updateUser: function (user) {
+            console.log('PARENT', user)
+            this.user = user
           }
         }
       })
-      Vue.config.devtools = true;
     </script>
   </body>
 </html>

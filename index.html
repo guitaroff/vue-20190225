@@ -49,16 +49,13 @@
 
     <script src="https://cdn.jsdelivr.net/npm/vue"></script>
     <script type="text/javascript">
+      Vue.config.devtools = true;
       var UsersList = {
         template: '#users-list',
         props: {
           users: {
             type: Array,
             required: true
-          }
-        },
-        data: function () {
-          return {
           }
         }
       }
@@ -90,7 +87,6 @@
           }
         }
       });
-      Vue.config.devtools = true;
     </script>
   </body>
 </html>
